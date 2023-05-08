@@ -52,70 +52,7 @@ La plataforma de Ubidots es escalable, lo que significa que puede adaptarse a di
 
 
 
-## $\textcolor{orange}{:}$
 
-
-
-Un código en Python, como ejemplo, para el control del sistema es el siguiente:
-
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-class CasaInteligente:
-    def __init__(self, temperatura_inicial, K, tau):
-        self.temperatura_actual = temperatura_inicial
-        self.temperatura_deseada = temperatura_inicial
-        self.historial_temperaturas = [temperatura_inicial]
-        self.K = K
-        self.tau = tau
-        self.dt = 1.0 / 60 # Paso de tiempo en horas (1 minuto)
-        self.error_integral = 0
-        self.error_anterior = 0
-        
-    def actualizar_temperatura(self, nueva_temperatura):
-        self.temperatura_actual = nueva_temperatura
-        self.historial_temperaturas.append(nueva_temperatura)
-        
-    def controlador_pid(self, Kp, Ki, Kd):
-        error = self.temperatura_deseada - self.temperatura_actual
-        self.error_integral += error * self.dt
-        error_derivada = (error - self.error_anterior) / self.dt
-        u = Kp * error + Ki * self.error_integral + Kd * error_derivada
-        self.error_anterior = error
-        return u
-    
-    def simular_dia(self, temperatura_deseada, Kp, Ki, Kd):
-        self.temperatura_deseada = temperatura_deseada
-        for _ in range(24 * 60): # Simular durante 24 horas en intervalos de 1 minuto
-            u = self.controlador_pid(Kp, Ki, Kd)
-            dydt = (self.K * u - self.temperatura_actual) / self.tau
-            nueva_temperatura = self.temperatura_actual + dydt * self.dt
-            self.actualizar_temperatura(nueva_temperatura)
-    
-    def graficar_temperaturas(self):
-        plt.plot(np.arange(len(self.historial_temperaturas)) / 60, self.historial_temperaturas, label="Temperatura")
-        plt.axhline(self.temperatura_deseada, color="r", linestyle="--", label="Temperatura deseada")
-        plt.xlabel("Hora")
-        plt.ylabel("Temperatura (°C)")
-        plt.title("Control de temperatura en una casa inteligente")
-        plt.legend()
-        plt.ylim(20,22)
-        plt.xlim(0,1)
-        plt.show()
-
-def main():
-    casa = CasaInteligente(25, K=7, tau=3)
-    casa.simular_dia(21, Kp=8, Ki=10, Kd=0.08)
-    casa.graficar_temperaturas()
-
-if __name__ == "__main__":
-    main()
-
-
-
-```
 
 
 
