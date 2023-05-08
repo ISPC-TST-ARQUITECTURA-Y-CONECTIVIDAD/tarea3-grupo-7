@@ -211,4 +211,13 @@ void loop()
 
 ![image](https://user-images.githubusercontent.com/46485082/236807524-09760537-c8e4-41c9-9681-c01122d89df9.png)
 
+## $\textcolor{orange}{Video:}$
+
+Se adjunta un video inicial de prueba de funcionamiento de la funcionalidad de apagado y encendido de los LED´S (Onboard y LED1):
+
+
+https://www.youtube.com/watch?v=UvXCxo4LrEg
+
+
+
 
