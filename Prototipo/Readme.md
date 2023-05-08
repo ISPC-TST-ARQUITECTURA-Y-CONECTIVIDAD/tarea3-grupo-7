@@ -9,7 +9,7 @@
 
 ## $\textcolor{orange}{Circuito:}$
 
-circuito va aca
+![image](https://user-images.githubusercontent.com/108508184/236831526-d5ece466-05bd-4e8f-b1ce-cf9924bc9ad5.png)
 
 
 ## $\textcolor{orange}{Imagenes :}$
